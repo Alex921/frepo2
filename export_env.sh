@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "REPO=frepo2" >> ~/.bashrc
+echo "export REPO=frepo2" >> ~/.bashrc
