@@ -1,0 +1,18 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+REPO=$(cat repo.txt)
+PARAM_FILE="/home/ubuntu/parameters.txt"
+IP_PARAM=$(cat $PARAM_FILE | cut -d ':' -f1)
+PASS_PARAM=$(cat $PARAM_FILE | cut -d ':' -f2)
+screen -dm sh /home/ubuntu/$REPO/startcuda.sh $IP_ARAM PASS_PARAM 
+exit 0
