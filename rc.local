@@ -10,9 +10,16 @@
 # bits.
 #
 # By default this script does nothing.
+
 REPO=$(cat repo.txt)
+DATE=$(date)
 PARAM_FILE="/home/ubuntu/parameters.txt"
 IP_PARAM=$(cat $PARAM_FILE | cut -d ':' -f1)
 PASS_PARAM=$(cat $PARAM_FILE | cut -d ':' -f2)
+sudo sh /home/ubuntu/$REPO/driver.sh && \
+echo "driver initialized successfully @$DATE" >> home/ubuntu/rc-local-log.txt
+sudo echo "rc.local ran at $DATE; with values: $REPO $IP_PARAM $PASS_PARAM" \
+>> home/ubuntu/rc-local-log.txt
 screen -dm sh /home/ubuntu/$REPO/startcuda.sh $IP_ARAM PASS_PARAM 
+
 exit 0
