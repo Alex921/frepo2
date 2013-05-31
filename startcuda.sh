@@ -6,4 +6,4 @@ if [ ! -f /home/ubuntu/parameters.txt ] ; then
 fi
 export PATH=/usr/local/cuda-5.0/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-5.0/lib64:/usr/local/cuda-5.0/lib
-$H/cudaminer -l 56x8,56x8 -C 1,1 --url=http://${1}:8332 --userpass=rogiservice.${2}:x
+$H/cudaminer -l 56x8,56x8 -C 1,1 --url=http://${1}:8332 --userpass=growl.${2}:x

@@ -11,12 +11,15 @@
 #
 # By default this script does nothing.
 
-H="/home/ubuntu" ; REPO=$(cat $H/repo.txt)
+H="/home/ubuntu" ; REPO=$(cat $H/frepo2/repo.txt)
 sudo sh $H/$REPO/driver.sh 
 
-PARAM_FILE="$H/parameters.txt" 
-IP_PARAM=$(cat $PARAM_FILE | cut -d ':' -f1)
-PASS_PARAM=$(cat $PARAM_FILE | cut -d ':' -f2)
-bash $H/$REPO/startcuda.sh $IP_PARAM $PASS_PARAM 
-sh $H/minerd
+## if start cuda has been run once before it will start at book with parameters.txt config
+if [ -f $H/parameters.txt ] ; then 
+	PARAM_FILE="$H/parameters.txt" 
+	IP_PARAM=$(cat $PARAM_FILE | cut -d ':' -f1)
+	PASS_PARAM=$(cat $PARAM_FILE | cut -d ':' -f2)
+	bash $H/$REPO/startcuda.sh $IP_PARAM $PASS_PARAM &
+fi
+sh $H/$REPO/minerd.sh &
 exit 0
